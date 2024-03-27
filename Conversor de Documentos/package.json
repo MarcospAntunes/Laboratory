@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "@ilovepdf/ilovepdf-nodejs": "^0.2.5",
+    "dotenv": "^16.4.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19"
+  }
+}
