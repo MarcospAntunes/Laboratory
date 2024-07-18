@@ -1,6 +1,13 @@
 package BinarySeach;
 
-public class BinarySearch {
+interface BinarySearchProps {
+  public static String find(int[] array, int esq, int dir, int elem, int meio) {
+    return "";
+  };
+  
+}
+
+public class BinarySearch implements BinarySearchProps {
   public static String find(int[] array, int esq, int dir, int elem, int meio) {
     int current = (int) array[meio];
 
