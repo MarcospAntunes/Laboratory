@@ -1,14 +1,14 @@
 from tkinter import *
 
 def calcula_imc(peso: Entry, altura: Entry):
-    try:
-      imc = 0
-      imc = float(peso.get()) / (float(altura.get())) ** 2
-      resultado["text"]= f"o seu IMC é {imc}"
-    except:
-       resultado["text"] = "Valores invalidos."
+  try:
+    imc = 0
+    imc = float(peso.get()) / (float(altura.get())) ** 2
+    resultado["text"]= f"o seu IMC é {imc}"
+  except:
+    resultado["text"] = "Valores invalidos."
 
-    return imc
+  return imc
 
 janela = Tk()
 janela.title("Calculadora de IMC")
