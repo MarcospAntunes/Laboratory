@@ -8,8 +8,10 @@ class TreeNode:
     return str(self.data)
 
 class BinaryTree:
-  def __init__(self, data = None):
-    if data:
+  def __init__(self, data = None, node=None):
+    if node:
+      self.root = node
+    elif data:
       node = TreeNode(data)
       self.root = node
     else:
@@ -36,6 +38,15 @@ class BinaryTree:
       self.postorder_traversal(node=node.right)
     
     print(node)
+    
+  def inorder_traversal(self, node=None):
+    if node is None:
+      node = self.root
+    if node.left:
+      self.inorder_traversal(node.left)
+    print(node, end=' ')
+    if node.right:
+      self.inorder_traversal(node.right)
 
   def height(self, node=None):
     if node is None:
@@ -52,8 +63,6 @@ class BinaryTree:
       return hright + 1
     else:
       return hleft + 1
-    
-    print(node)
 
 
 if __name__ == "__main__":
