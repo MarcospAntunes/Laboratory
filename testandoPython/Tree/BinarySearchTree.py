@@ -1,4 +1,4 @@
-from tree import BinaryTree, TreeNode
+from .tree import BinaryTree, TreeNode
 import random
 
 random.seed(77)

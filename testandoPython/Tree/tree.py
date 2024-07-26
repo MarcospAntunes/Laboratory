@@ -1,3 +1,7 @@
+from .queue import Queue
+
+ROOT = "root"
+
 class TreeNode:
   def __init__(self, data):
     self.data = data
@@ -47,6 +51,23 @@ class BinaryTree:
     print(node, end=' ')
     if node.right:
       self.inorder_traversal(node.right)
+      
+  def levelorder_traversal(self, node=ROOT):
+    if node == ROOT:
+      node = self.root
+    
+    queue = Queue()
+    queue.push(elem=node)
+    
+    while len(queue):
+      node = queue.pop()
+      
+      if node.left:
+        queue.push(node.left)
+      if node.right:
+        queue.push(node.right)
+      
+      print(node, end=' ')
 
   def height(self, node=None):
     if node is None:
