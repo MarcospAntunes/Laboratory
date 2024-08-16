@@ -2,6 +2,7 @@ from .tree import BinaryTree, TreeNode
 import random
 
 random.seed(77)
+ROOT = "root"
 
 class BinarySearchTree(BinaryTree):
   def insert(self, value):
@@ -33,7 +34,7 @@ class BinarySearchTree(BinaryTree):
     if value < node.data:
       return self._search(value, node=node.left)
     return self._search(value, node.right)
-    
+  
   # def search(self, value, node=0):
   #   if node == 0:
   #     node = self.root
@@ -43,6 +44,45 @@ class BinarySearchTree(BinaryTree):
   #     return self.search(value, node=node.left)
   #   return self.search(value, node.right)
   
+  def min(self, node=ROOT):
+    if node == ROOT:
+      node = self.root
+    
+    while node.left:
+      node = node.left
+    
+    return node.data
+  
+  def max(self, node=ROOT):
+    if node == ROOT:
+      node = self.root
+      
+    while node.right:
+      node = node.right
+    
+    return node.data
+  
+  def remove(self, value, node=ROOT):
+    if node == ROOT:
+      node = self.root
+    
+    if node is None:
+      return node
+    
+    if value < node.data:
+      node.left = self.remove(value, node.left)
+    elif value > node.data:
+      node.right = self.remove(value, node.right)
+    else:
+      if node.left is None:
+        return node.right
+      elif node.right is None:
+        return node.left
+      else:
+        substitute = self.min(node.right)
+        node.data = substitute
+        node.right = self.remove(substitute, node.right)
+    return node
 
 values = random.sample(range(1, 1000), 42)
 
@@ -52,6 +92,10 @@ for v in values:
   bst.insert(v)
 
 bst.inorder_traversal()
+
+print("\n -----")
+print("Máximo:", bst.max())
+print("Mínimo: ", bst.min())
 
 items = [1, 3, 981, 510, 1000]
 
